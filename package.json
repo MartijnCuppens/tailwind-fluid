@@ -1,6 +1,6 @@
 {
   "name": "@martijn.cuppens/tailwindcss-fluid",
-  "version": "0.0.0-alpha4",
+  "version": "1.0.0",
   "description": "Add fluid variants to tailwind",
   "main": "index.js",
   "scripts": {
