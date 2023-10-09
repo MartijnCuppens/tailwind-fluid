@@ -4,7 +4,7 @@ import isPlainObject from 'tailwindcss/lib/util/isPlainObject';
 
 export default plugin.withOptions((
   {
-    minimum = 20,
+    minimum = 1.25,
     breakpoint = 1200,
     factor = 10,
     twoDimensional = false,
@@ -82,8 +82,8 @@ export default plugin.withOptions((
             let value = Number.parseFloat(stringValue);
 
             // Convert to px if in rem
-            if (unit === 'rem') {
-              value *= remValue;
+            if (unit === 'px') {
+              value /= remValue;
             }
 
             // Only add responsive function if needed
@@ -96,8 +96,8 @@ export default plugin.withOptions((
             const diff = Math.abs(value) - baseValue;
 
             // Divide by remValue if needed
-            if (unit === 'rem') {
-              baseValue /= remValue;
+            if (unit === 'px') {
+              baseValue *= remValue;
             }
 
             const viewportUnit = twoDimensional ? 'vmin' : 'vw';
@@ -105,8 +105,8 @@ export default plugin.withOptions((
             const func = value > 0 ? 'min' : 'max';
 
             baseValue = value > 0 ? baseValue : -baseValue;
-            value = `${Number((unit === 'rem' ? value / remValue : value).toFixed(unitPrecision))}${unit}`;
-            const fluidValue = diff * 100 / breakpoint;
+            value = `${Number((unit === 'px' ? value * remValue : value).toFixed(unitPrecision))}${unit}`;
+            const fluidValue = diff * remValue * 100 / breakpoint;
 
             return `${func}(${value}, ${Number(baseValue.toFixed(unitPrecision))}${unit} ${sign} ${Number(fluidValue.toFixed(unitPrecision))}${viewportUnit})`;
           });

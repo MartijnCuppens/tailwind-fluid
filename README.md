@@ -56,7 +56,7 @@ can be simplified to:
 module.exports = {
   plugins: [
     require('@martijn.cuppens/tailwindcss-fluid')({
-      minimum: 20,           // Minimum size that needs fluid rescaling (in px).
+      minimum: 1.25,           // Minimum size that needs fluid rescaling (in rem).
       breakpoint: 1200,      // Max screen width where the fluid rescaling is applied to (in px).
       factor: 10,            // Strength of resizing.
       twoDimensional: false, // Set to true if you want to resize to the smallest size of your device.
