@@ -23,7 +23,7 @@ export default plugin.withOptions((
     // Define the base line-height in the root.
     addBase({
       ':root': {
-        '--tw-lh': theme('lineHeight').normal ?? 'min(1.5em, 1em + .5rem)', // Fail-safe when normal is line height is removed from config
+        '--tw-lh': theme('lineHeight')?.normal ?? 'min(1.5em, 1em + .5rem)', // Fail-safe when normal is line height is removed from config
       },
       // Add line height for elements that have a font size set by default.
       'small,rt': {
@@ -31,11 +31,11 @@ export default plugin.withOptions((
       },
     });
 
-    // We need to override the excisting font size utility, to make the line heights work.
+    // We need to override the existing font size utility, to make the line heights work.
     matchUtilities(
       {
-        text: (value, {modifier}) => {
-          let [fontSize, options] = Array.isArray(value) ? value : [value];
+        text: (value, { modifier }) => {
+          const [fontSize, options] = Array.isArray(value) ? value : [value];
 
           if (modifier) {
             return {
@@ -44,17 +44,17 @@ export default plugin.withOptions((
             };
           }
 
-          let {lineHeight, letterSpacing, fontWeight} = isPlainObject(options)
+          const { lineHeight, letterSpacing, fontWeight } = isPlainObject(options)
             ? options
-            : {lineHeight: options};
+            : { lineHeight: options };
 
           return {
             'font-size': fontSize,
             // We always need to set the line height, either with the line height
             // that is defined, or we recalculate the line height with the custom property.
             'line-height': lineHeight === undefined ? 'var(--tw-lh)' : lineHeight,
-            ...(letterSpacing === undefined ? {} : {'letter-spacing': letterSpacing}),
-            ...(fontWeight === undefined ? {} : {'font-weight': fontWeight}),
+            ...(letterSpacing === undefined ? {} : { 'letter-spacing': letterSpacing }),
+            ...(fontWeight === undefined ? {} : { 'font-weight': fontWeight }),
           };
         },
       },
@@ -71,10 +71,10 @@ export default plugin.withOptions((
         leading: (value) => ({
           '--tw-lh': value,
         }),
-      }, {values: theme('lineHeight')},
+      }, { values: theme('lineHeight') },
     );
 
-    addVariant('fluid', ({modifySelectors, separator, container}) => {
+    addVariant('fluid', ({ modifySelectors, separator, container }) => {
       container.walkDecls(decl => {
         // Exclude line-height modifiers.
         if (decl.prop !== 'line-height') {
@@ -113,13 +113,12 @@ export default plugin.withOptions((
         }
       });
 
-      modifySelectors(({className}) => {
+      modifySelectors(({ className }) => {
         return `.${e(`fluid${separator}${className}`)}`;
       });
     });
   };
 }, () => {
-
   return {
     theme: {
       // Remove line height from font sizes

@@ -4,7 +4,7 @@
   "description": "Add fluid variants to tailwind",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint *.js"
   },
   "keywords": [
     "tailwindcss",
@@ -29,6 +29,8 @@
     "access": "public"
   },
   "devDependencies": {
+    "eslint": "^8.51.0",
+    "eslint-config-standard": "^17.1.0",
     "tailwindcss": "^3.3.3"
   }
 }
