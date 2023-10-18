@@ -69,4 +69,4 @@ module.exports = {
 
 ## Demo
 
-[Demo on Tailwind Play](https://play.tailwindcss.com/Xk2FSQgCvM)
+[Demo on Tailwind Play](https://play.tailwindcss.com/nTyVWtOoQQ)
