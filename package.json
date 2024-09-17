@@ -4,8 +4,8 @@
   "description": "Add fluid variants to tailwind",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src/*.js index.js",
-    "fix": "eslint src/*.js index.js --fix"
+    "lint": "eslint src/*.js index.js",
+    "lint-fix": "eslint src/*.js index.js --fix"
   },
   "keywords": [
     "tailwindcss",
