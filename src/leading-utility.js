@@ -1,9 +1,9 @@
-export default ({matchUtilities, theme}) => {
+export default ({ matchUtilities, theme }) => {
   matchUtilities(
     {
       leading: (value) => ({
         '--tw-lh': value,
       }),
-    }, {values: theme('lineHeight')},
+    }, { values: theme('lineHeight') },
   );
 };

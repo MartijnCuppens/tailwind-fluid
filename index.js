@@ -21,15 +21,15 @@ export default plugin.withOptions((
     },
   ) => {
     // Define the base line-height in the root.
-    setDefaultLineHeight({addBase, theme});
+    setDefaultLineHeight({ addBase, theme });
 
     // We need to override the existing font size utility,
     // to make the line heights work with custom properties.
-    fontSizeUtility({matchUtilities, theme});
+    fontSizeUtility({ matchUtilities, theme });
 
     // Use custom properties instead of line-heights in leading utilities.
-    leadingUtility({matchUtilities, theme});
+    leadingUtility({ matchUtilities, theme });
 
-    fluidVariant({addVariant, minimum, unitPrecision, remValue, breakpoint});
+    fluidVariant({ addVariant, minimum, unitPrecision, remValue, breakpoint });
   };
 }, () => config);

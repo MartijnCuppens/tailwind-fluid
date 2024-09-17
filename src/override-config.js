@@ -1,8 +1,8 @@
-import {theme} from 'tailwindcss/stubs/config.full';
+import { theme } from 'tailwindcss/stubs/config.full';
 
 const calculatedLineHeight = (lineHeight) => {
   return `max(1em, ${lineHeight} * min(4em / 9 + 2rem / 3, min((2em + 1rem) / 3, (4em - 1rem) / 3)))`;
-}
+};
 
 export default {
   theme: {
