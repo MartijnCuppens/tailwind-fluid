@@ -1,6 +1,6 @@
-export default ({decl, minimum, remValue, breakpoint, unitPrecision}) => {
+export default ({ decl, minimum, remValue, breakpoint, unitPrecision }) => {
   decl.value = decl.value.replace(/(-?\d*\.?\d+)rem/g, (match, stringValue) => {
-    let value = Number.parseFloat(stringValue);
+    const value = Number.parseFloat(stringValue);
 
     // Only add responsive function if needed
     if (minimum >= Math.abs(value)) {

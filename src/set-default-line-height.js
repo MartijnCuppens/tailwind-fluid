@@ -1,4 +1,4 @@
-export default ({addBase, theme}) => {
+export default ({ addBase, theme }) => {
   // Define the base line-height in the root.
   addBase({
     ':root': {
