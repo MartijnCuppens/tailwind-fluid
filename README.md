@@ -94,6 +94,22 @@ can be simplified to:
 
 Sweet 🤤
 
+## Container based resizing
+
+You can use the fluid rescaling in combination with container queries. Like [@tailwindcss/container-queries
+](https://github.com/tailwindlabs/tailwindcss-container-queries), you can use the `@container` wrappers, but instead of defining each sm/md/lg breakpoint, you can just use the `@container` variant. I highly recommend to use named containers to avoid unwanted inheritance of parent containers.
+
+```html
+<section class="@container/widget">
+  <h2 class="@container/widget:text-7xl">
+    This title will rescale to the size of `.@container/widget`
+  </h2>
+  <p>
+    ...
+  </p>
+</section>
+```
+
 ## Options
 
 ### Tailwind plugin options
