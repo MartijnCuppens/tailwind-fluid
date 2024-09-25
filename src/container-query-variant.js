@@ -1,35 +1,24 @@
 import postcssFluid from './postcss-fluid';
 
-const moduleIsAvailable = (path) => {
-  try {
-    require.resolve(path);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
-
 export default ({ matchVariant, minimum, remValue, breakpoint, unitPrecision, matchUtilities }) => {
-  // To avoid duplicate @container
-  if (!moduleIsAvailable('@tailwindcss/container-queries')) {
-    matchUtilities(
-      {
-        '@container': (value, { modifier }) => {
-          return {
-            'container-type': value,
-            'container-name': modifier,
-          };
-        },
+  // TODO: find a way to test if `@tailwindcss/container-queries` is enabled as plugin.
+  matchUtilities(
+    {
+      '@container': (value, { modifier }) => {
+        return {
+          'container-type': value,
+          'container-name': modifier,
+        };
       },
-      {
-        values: {
-          DEFAULT: 'inline-size',
-          normal: 'normal',
-        },
-        modifiers: 'any',
-      }
-    );
-  }
+    },
+    {
+      values: {
+        DEFAULT: 'inline-size',
+        normal: 'normal',
+      },
+      modifiers: 'any',
+    }
+  );
 
   matchVariant(
     '@container',
