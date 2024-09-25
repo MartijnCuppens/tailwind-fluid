@@ -140,6 +140,6 @@ module.exports = {
 
 ```
 
-## Demo (without PostCSS plugin)
+## Demo
 
-[Demo on Tailwind Play](https://play.tailwindcss.com/Xk2FSQgCvM)
+[Demo on CodeSandbox](https://vj77z7-5173.csb.app/)
